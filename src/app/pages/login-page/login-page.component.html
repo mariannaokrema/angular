@@ -1,0 +1,15 @@
+<form action="" class="login-form" [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1 class="h1">Вход</h1>
+
+  <label>
+    Telegram username
+    <input formControlName="username" type="text" placeholder="login" />
+  </label>
+  <label>
+    Password
+    <input formControlName="password" type="password" placeholder="password" />
+  </label>
+  <button type="submit">enter</button>
+</form>
+
+<img class="image" src="/assets/images/756084.jpg" alt="" />

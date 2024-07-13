@@ -1,0 +1,31 @@
+@if (profile ) {
+
+<div class="profile-card">
+  <div class="avatar-name">
+    <img
+      [src]="profile.avatarUrl | imgUrl"
+      alt="avatar"
+      class="profile-card__avatar"
+    />
+    <div class="profile-card__name">
+      <strong>{{ profile.firstName }} {{ profile.lastName }}</strong>
+      <span>{{ profile.username }}</span>
+    </div>
+  </div>
+
+  <div class="profile-card__description">
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam enim
+    aliquid libero cum distinctio odio fugit ipsum quam reprehenderit sit.
+    Expedita sint nulla blanditiis delectus fuga iusto. Animi, delectus dolore.
+  </div>
+
+  <div class="profile-card__tags">
+    <div *ngFor="let skill of profile.stack" class="skill-tag">{{ skill }}</div>
+  </div>
+
+  <div class="profile-cart__action-btns">
+    <button class="btn">SUBSCRIBE</button>
+  </div>
+</div>
+
+}

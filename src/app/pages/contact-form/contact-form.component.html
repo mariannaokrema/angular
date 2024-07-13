@@ -1,0 +1,18 @@
+<form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="contact-form">
+  <app-custom-input label="Name" controlName="name" placeholder="Enter your name"></app-custom-input>
+  <app-custom-input label="Email" controlName="email" type="email" placeholder="Enter your email"></app-custom-input>
+  <app-custom-input label="Message" controlName="message" placeholder="Enter your message"></app-custom-input>
+
+  <div class="form-group">
+    <label for="phones">Phones:</label>
+    <button type="button" (click)="addPhone()">Add Phone</button>
+    <div formArrayName="phones">
+      <div *ngFor="let phone of phones.controls; let i = index" [formGroup]="getPhoneFormGroup(i)">
+        <app-custom-input label="Phone" controlName="phone" placeholder="Enter phone number"></app-custom-input>
+        <button type="button" (click)="removePhone(i)">Remove</button>
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="submit-button">Submit</button>
+</form>

@@ -1,5 +1,9 @@
 /* You can add global styles to this file, and also import other style files */
+// TODO -< Одинарні кавички мають бути в css/scss файлів
+// TODO -< Для стилів треба створювати папку - "styles" і в ній створювати файли стилів, тільки цей файл тут лежить, і в нього прописуються всі імпорти стилів
+// TODO -< Спробуй наступним кроком додати на проект "TAILWIND", і на ному все писати
 @import "fonts";
+
 :root {
   --dark-color: #2a3636;
   --light-color: rgb(255, 255, 255);

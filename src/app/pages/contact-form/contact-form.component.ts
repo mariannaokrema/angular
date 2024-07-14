@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, inject } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormArray, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
@@ -22,11 +22,11 @@ import { CustomInputComponent } from '../../custom-input/custom-input.component'
 export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
 
-  constructor(
-    private fb: FormBuilder,
-    private router: Router,
-    private formService: FormService
-  ) {
+  fb = inject(FormBuilder);
+  router = inject(Router);
+  formService = inject(FormService);
+
+  constructor() {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],

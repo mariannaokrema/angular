@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { ControlContainer, FormGroupDirective, FormControl } from '@angular/forms';
+import { Component, Input, OnInit, inject } from '@angular/core';
+import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
@@ -8,19 +8,21 @@ import { ReactiveFormsModule } from '@angular/forms';
   templateUrl: './custom-input.component.html',
   styleUrls: ['./custom-input.component.scss'],
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
-  viewProviders: [{ provide: ControlContainer, useExisting: FormGroupDirective }]
+  imports: [CommonModule, ReactiveFormsModule]
 })
-export class CustomInputComponent {
+export class CustomInputComponent implements OnInit {
+  @Input() formGroup!: FormGroup;
   @Input() label!: string;
   @Input() controlName!: string;
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
 
-  constructor(private controlContainer: ControlContainer) {}
+  control!: FormControl;
 
-  get control(): FormControl {
-    return this.controlContainer.control?.get(this.controlName) as FormControl;
+  fb = inject(FormBuilder);
+
+  ngOnInit() {
+    this.control = this.formGroup.get(this.controlName) as FormControl;
   }
 
   getErrorMessage() {

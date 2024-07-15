@@ -1,16 +1,22 @@
 <div class="form-group">
-  <label [for]="controlName">{{ label }}</label>
-  <input
-    [id]="controlName"
-    [formControl]="control"
-    [type]="type"
-    [placeholder]="placeholder"
-    class="form-control"
-  />
-  <ng-container
-    *ngTemplateOutlet="control?.invalid && (control?.dirty || control?.touched) ? errorTemplate : null"
-  ></ng-container>
-  <ng-template #errorTemplate>
-    <div class="error-message">{{ errorMessage() }}</div>
-  </ng-template>
+  <label>
+    {{ label }}
+    <input
+      [formControl]="control"
+      [type]="type"
+      [placeholder]="placeholder"
+      class="form-control"
+      [attr.name]="controlName"
+    />
+    <ng-container
+      *ngTemplateOutlet="
+        control?.invalid && (control?.dirty || control?.touched)
+          ? errorTemplate
+          : null
+      "
+    ></ng-container>
+    <ng-template #errorTemplate>
+      <div class="error-message">{{ errorMessage() }}</div>
+    </ng-template>
+  </label>
 </div>

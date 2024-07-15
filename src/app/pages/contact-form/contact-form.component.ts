@@ -3,7 +3,7 @@ import { FormBuilder, FormGroup, Validators, FormArray, ReactiveFormsModule } fr
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
 import { HttpClientModule } from '@angular/common/http';
-import { FormService } from '../../data/services/form/form.service';
+import { PostService } from './PostService';
 import { CustomInputComponent } from '../../custom-input/custom-input.component';
 
 @Component({
@@ -17,14 +17,14 @@ import { CustomInputComponent } from '../../custom-input/custom-input.component'
   ],
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.scss'],
-  providers: [FormService],
+  providers: [PostService],
 })
 export class ContactFormComponent implements OnInit {
   contactForm: FormGroup;
 
   fb = inject(FormBuilder);
   router = inject(Router);
-  formService = inject(FormService);
+  formService = inject(PostService);
 
   constructor() {
     this.contactForm = this.fb.group({
@@ -80,7 +80,7 @@ export class ContactFormComponent implements OnInit {
       const formValue = this.contactForm.value;
       formValue.phones = formValue.phones.filter((phoneGroup: any) => phoneGroup.phone);
 
-      this.formService.submitForm(formValue).subscribe({
+      this.formService.createPost(formValue).subscribe({
         next: (response) => {
           this.router.navigate(['/result'], {
             queryParams: { data: JSON.stringify(response) },

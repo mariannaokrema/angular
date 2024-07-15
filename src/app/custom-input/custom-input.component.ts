@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject, signal, computed } from '@angular/core';
 import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -21,8 +21,11 @@ export class CustomInputComponent implements OnInit {
 
   fb = inject(FormBuilder);
 
+  controlState = signal<FormControl | null>(null);
+
   ngOnInit() {
     this.control = this.formGroup.get(this.controlName) as FormControl;
+    this.controlState.set(this.control);
   }
 
   getErrorMessage() {
@@ -34,4 +37,17 @@ export class CustomInputComponent implements OnInit {
     }
     return '';
   }
+
+  errorMessage = computed(() => {
+    const control = this.controlState();
+    if (control) {
+      if (control.hasError('required')) {
+        return `${this.label} is required`;
+      }
+      if (control.hasError('email')) {
+        return `Invalid ${this.label.toLowerCase()}`;
+      }
+    }
+    return '';
+  });
 }

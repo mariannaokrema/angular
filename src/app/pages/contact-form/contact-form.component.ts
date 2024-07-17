@@ -20,22 +20,20 @@ import { CustomInputComponent } from '../../custom-input/custom-input.component'
   providers: [PostService],
 })
 export class ContactFormComponent implements OnInit {
-  contactForm: FormGroup;
+  contactForm!: FormGroup;
 
   fb = inject(FormBuilder);
   router = inject(Router);
   formService = inject(PostService);
 
-  constructor() {
+  ngOnInit() {
     this.contactForm = this.fb.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       message: ['', Validators.required],
       phones: this.fb.array([]),
     });
-  }
 
-  ngOnInit() {
     this.contactForm.valueChanges.subscribe(value => {
       console.log('Form value changed:', value);
     });

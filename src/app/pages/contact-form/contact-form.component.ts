@@ -31,7 +31,7 @@ export class ContactFormComponent implements OnInit {
 
   private fb = inject(FormBuilder);
   private router = inject(Router);
-  private formService = inject(PostService);
+  private postService = inject(PostService);
 
   private phonesSubject = new BehaviorSubject<FormArray>(this.fb.array([]));
   phones$ = this.phonesSubject.asObservable();
@@ -92,7 +92,7 @@ export class ContactFormComponent implements OnInit {
         (phoneGroup: any) => phoneGroup.phone
       );
 
-      this.formService.createPost(formValue).subscribe({
+      this.postService.createPost(formValue).subscribe({
         next: (response) => {
           this.router.navigate(['/result'], {
             queryParams: { data: JSON.stringify(response) },

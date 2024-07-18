@@ -1,4 +1,4 @@
-export interface Profile {
+export type TProfile = {
   id: number;
   username: string;
   avatarUrl: null | string;
@@ -8,4 +8,4 @@ export interface Profile {
   isActive: boolean;
   stack: string[];
   city: string;
-}
+};

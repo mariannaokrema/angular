@@ -1,6 +1,6 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { CounterService } from '../data/services/CounterService/counter-service.service';
+import { CounterService } from '../services/CounterService/counter-service.service';
 
 @Component({
   selector: 'app-counter-display',

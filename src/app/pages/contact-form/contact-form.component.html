@@ -7,7 +7,7 @@
     <label for="phones">Phones:</label>
     <button type="button" (click)="addPhone()">Add Phone</button>
     <div formArrayName="phones">
-      <div *ngFor="let phone of phones.controls; let i = index" [formGroup]="getPhoneFormGroup(i)">
+      <div *ngFor="let phone of (phones$ | async)?.controls; let i = index" [formGroup]="getPhoneFormGroup(i)">
         <app-custom-input [formGroup]="getPhoneFormGroup(i)" label="Phone" controlName="phone" placeholder="Enter phone number"></app-custom-input>
         <button type="button" (click)="removePhone(i)">Remove</button>
       </div>

@@ -8,20 +8,14 @@ import {
 } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { HttpClientModule } from '@angular/common/http';
-import { PostService } from './PostService';
+import { PostService } from '../../services/PostService';
 import { CustomInputComponent } from '../../custom-input/custom-input.component';
 import { BehaviorSubject } from 'rxjs';
 
 @Component({
   selector: 'app-contact-form',
   standalone: true,
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    HttpClientModule,
-    CustomInputComponent,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, CustomInputComponent],
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.scss'],
   providers: [PostService],

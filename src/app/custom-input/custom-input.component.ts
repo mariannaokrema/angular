@@ -28,12 +28,12 @@ export class CustomInputComponent implements OnInit {
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
 
-  control!: FormControl;
+  private control!: FormControl;
 
   fb = inject(FormBuilder);
 
-  controlState = signal<FormControl | null>(null);
-  errorMessageSignal: WritableSignal<string> = signal<string>('');
+  private readonly controlState = signal<FormControl | null>(null);
+  private readonly errorMessageSignal: WritableSignal<string> = signal<string>('');
 
   ngOnInit() {
     this.control = this.formGroup.get(this.controlName) as FormControl;

@@ -5,7 +5,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class PostService {
-  private apiUrl = 'https://jsonplaceholder.typicode.com/posts';
+  private readonly apiUrl = 'https://jsonplaceholder.typicode.com/posts';
 
   private readonly http: HttpClient = inject(HttpClient);
 

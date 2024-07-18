@@ -2,22 +2,21 @@ import {
   Component,
   Input,
   OnInit,
-  inject,
   signal,
   computed,
   WritableSignal,
   HostBinding,
 } from '@angular/core';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
-import { CommonModule } from '@angular/common';
+import { FormGroup, FormControl } from '@angular/forms';
+import { NgTemplateOutlet } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
 
 @Component({
   selector: 'app-custom-input',
   templateUrl: './custom-input.component.html',
-  styleUrls: ['./custom-input.component.scss'],
+  styleUrl: './custom-input.component.scss',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule],
+  imports: [NgTemplateOutlet, ReactiveFormsModule],
 })
 export class CustomInputComponent implements OnInit {
   @HostBinding('style.display') display = 'block';
@@ -28,12 +27,10 @@ export class CustomInputComponent implements OnInit {
   @Input() type: string = 'text';
   @Input() placeholder: string = '';
 
-  private control!: FormControl;
+  control!: FormControl;
 
-  fb = inject(FormBuilder);
-
-  private readonly controlState = signal<FormControl | null>(null);
-  private readonly errorMessageSignal: WritableSignal<string> = signal<string>('');
+  private controlState = signal<FormControl | null>(null);
+  private errorMessageSignal: WritableSignal<string> = signal<string>('');
 
   ngOnInit() {
     this.control = this.formGroup.get(this.controlName) as FormControl;

@@ -1,13 +1,12 @@
 import { Component, inject, OnInit } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CounterService } from '../services/CounterService/counter-service.service';
 
 @Component({
   selector: 'app-counter-display',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './counter-display.component.html',
-  styleUrls: ['./counter-display.component.scss'],
+  styleUrl: './counter-display.component.scss',
 })
 export class CounterDisplayComponent implements OnInit {
   counter: number = 0;

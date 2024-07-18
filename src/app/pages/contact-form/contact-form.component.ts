@@ -17,7 +17,7 @@ import { BehaviorSubject } from 'rxjs';
   standalone: true,
   imports: [CommonModule, ReactiveFormsModule, CustomInputComponent],
   templateUrl: './contact-form.component.html',
-  styleUrls: ['./contact-form.component.scss'],
+  styleUrl: './contact-form.component.scss',
   providers: [PostService],
 })
 export class ContactFormComponent implements OnInit {

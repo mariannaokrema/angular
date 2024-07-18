@@ -1,13 +1,12 @@
 import { Component, inject } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { CounterService } from '../services/CounterService/counter-service.service';
 
 @Component({
   selector: 'app-logo-component',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   templateUrl: './logo-component.component.html',
-  styleUrls: ['./logo-component.component.scss'],
+  styleUrl: './logo-component.component.scss',
 })
 export class LogoComponent {
   private counterService = inject(CounterService);

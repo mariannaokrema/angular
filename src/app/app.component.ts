@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { NgIf } from '@angular/common';
 import { RouterOutlet, RouterModule } from '@angular/router';
 
 @Component({
@@ -7,6 +7,6 @@ import { RouterOutlet, RouterModule } from '@angular/router';
   standalone: true,
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  imports: [CommonModule, RouterOutlet, RouterModule],
+  imports: [NgIf, RouterOutlet, RouterModule],
 })
 export class AppComponent {}

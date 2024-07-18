@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CounterService } from '../data/services/CounterService/counter-service.service';
 
@@ -10,7 +10,7 @@ import { CounterService } from '../data/services/CounterService/counter-service.
   styleUrls: ['./logo-component.component.scss'],
 })
 export class LogoComponent {
-  constructor(private counterService: CounterService) {}
+  private counterService = inject(CounterService);
 
   incrementCounter() {
     this.counterService.incrementCounter();

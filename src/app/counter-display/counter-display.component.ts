@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { CounterService } from '../data/services/CounterService/counter-service.service';
 
@@ -12,10 +12,10 @@ import { CounterService } from '../data/services/CounterService/counter-service.
 export class CounterDisplayComponent implements OnInit {
   counter: number = 0;
 
-  constructor(private counterService: CounterService) {}
+  private counterService = inject(CounterService);
 
   ngOnInit(): void {
-    this.counterService.counter$.subscribe(value => {
+    this.counterService.counter$.subscribe((value) => {
       this.counter = value;
     });
   }

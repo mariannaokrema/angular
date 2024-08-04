@@ -1,21 +1,17 @@
-import { Component, inject, OnInit } from '@angular/core';
-import { CounterService } from '../services/CounterService/counter-service.service';
+import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { toSignal } from '@angular/core/rxjs-interop';
 
 @Component({
   selector: 'app-counter-display',
   standalone: true,
   imports: [],
-  templateUrl: './counter-display.component.html',
-  styleUrl: './counter-display.component.scss',
+  template: `<p>Counter: {{ counter().counter }}</p>`,
+  styleUrls: ['./counter-display.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CounterDisplayComponent implements OnInit {
-  counter: number = 0;
+export default class CounterDisplayComponent {
+  private readonly route = inject(ActivatedRoute);
 
-  private counterService = inject(CounterService);
-
-  ngOnInit(): void {
-    this.counterService.counter$.subscribe((value) => {
-      this.counter = value;
-    });
-  }
+  protected readonly counter = toSignal(this.route.data, { initialValue: { counter: 0 } });
 }

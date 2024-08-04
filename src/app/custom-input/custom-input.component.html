@@ -9,11 +9,7 @@
       [attr.name]="controlName"
     />
     <ng-container
-      *ngTemplateOutlet="
-        control?.invalid && (control?.dirty || control?.touched)
-          ? errorTemplate
-          : null
-      "
+      *ngTemplateOutlet="control?.invalid && (control?.dirty || control?.touched) ? errorTemplate : null"
     ></ng-container>
     <ng-template #errorTemplate>
       <div class="error-message">{{ errorMessage() }}</div>

@@ -1,93 +1,70 @@
-import { Component, OnInit, inject } from '@angular/core';
-import {
-  FormBuilder,
-  FormGroup,
-  Validators,
-  FormArray,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { Component, DestroyRef, OnInit, inject } from '@angular/core';
+import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { PostService } from '../../services/PostService';
+import { PostService } from '../../services/Post.service';
 import { CustomInputComponent } from '../../custom-input/custom-input.component';
-import { BehaviorSubject } from 'rxjs';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { TResponseData } from '../../types/responseData';
+import { FormService } from '../../services/Form.service';
+import { CustomDateComponent } from '../../custom-date/custom-date.component';
+import { ImageFallbackDirective } from '../../directives/image-fallback.directive';
 
 @Component({
   selector: 'app-contact-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, CustomInputComponent],
+  imports: [CommonModule, ReactiveFormsModule, CustomInputComponent, ImageFallbackDirective, CustomDateComponent],
   templateUrl: './contact-form.component.html',
-  styleUrl: './contact-form.component.scss',
+  styleUrls: ['./contact-form.component.scss'],
   providers: [PostService],
 })
 export class ContactFormComponent implements OnInit {
-  contactForm!: FormGroup;
+  private readonly router = inject(Router);
+  private readonly postService = inject(PostService);
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly formService = inject(FormService);
+  private readonly fb = inject(FormBuilder);
 
-  private fb = inject(FormBuilder);
-  private router = inject(Router);
-  private postService = inject(PostService);
+  protected form = this.fb.group({
+    name: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    message: ['', Validators.required],
+    // phones: this.fb.array([]),
+  });
 
-  private phonesSubject = new BehaviorSubject<FormArray>(this.fb.array([]));
-  phones$ = this.phonesSubject.asObservable();
+  // protected phoneControls = this.form.get('phones') as FormArray;
+  // protected phoneArray: FormGroup[] = [];
 
   ngOnInit() {
-    this.contactForm = this.fb.group({
-      name: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      message: ['', Validators.required],
-      phones: this.phonesSubject.value,
-    });
-
-    this.contactForm.valueChanges.subscribe((value) => {
-      console.log('Form value changed:', value);
-    });
-
-    this.contactForm.statusChanges.subscribe((status) => {
-      console.log('Form status changed:', status);
-    });
+    this.formChangesSubscription();
+    // this.phoneArray = this.phoneControls.controls as FormGroup[];
   }
 
-  addPhone() {
-    const phoneFormGroup = this.fb.group({
-      phone: ['', Validators.required],
-    });
-    const phones = this.phonesSubject.value;
-    phones.push(phoneFormGroup);
-    this.phonesSubject.next(phones);
-  }
+  // addPhone() {
+  //   const phoneFormGroup = this.fb.group({
+  //     phone: ['', Validators.required],
+  //   });
+  //   this.phoneControls.push(phoneFormGroup);
+  //   this.updatePhoneArray();
+  // }
 
-  removePhone(index: number) {
-    const phones = this.phonesSubject.value;
-    phones.removeAt(index);
-    this.phonesSubject.next(phones);
-  }
-
-  getPhoneFormGroup(index: number): FormGroup {
-    return this.phonesSubject.value.at(index) as FormGroup;
-  }
-
-  checkPhoneControlsValidity() {
-    const phones = this.phonesSubject.value;
-    for (let i = phones.length - 1; i >= 0; i--) {
-      const phoneGroup = phones.at(i);
-      if (phoneGroup.get('phone')?.invalid) {
-        phones.removeAt(i);
-      }
-    }
-    this.phonesSubject.next(phones);
-  }
+  // removePhone(index: number) {
+  //   this.phoneControls.removeAt(index);
+  //   this.updatePhoneArray();
+  // }
 
   onSubmit() {
-    this.checkPhoneControlsValidity();
+    // this.checkPhoneControlsValidity();
 
-    if (this.contactForm.valid) {
-      const formValue = this.contactForm.value;
-      formValue.phones = formValue.phones.filter(
-        (phoneGroup: any) => phoneGroup.phone
-      );
+    if (this.form.valid) {
+      const formValue = this.form.value as TResponseData;
+
+      // formValue.phones = formValue.phones.filter((phoneGroup: Phone) => phoneGroup.phone);
 
       this.postService.createPost(formValue).subscribe({
         next: (response) => {
+          this.formService.setFormValid(true); // Устанавливаем состояние формы как валидное
+
           this.router.navigate(['/result'], {
             queryParams: { data: JSON.stringify(response) },
           });
@@ -101,7 +78,27 @@ export class ContactFormComponent implements OnInit {
       });
     } else {
       console.log('Form is not valid');
-      this.contactForm.markAllAsTouched();
+      this.form.markAllAsTouched();
     }
   }
+
+  private formChangesSubscription() {
+    this.form.valueChanges.pipe(takeUntilDestroyed(this.destroyRef)).subscribe((value) => {
+      console.log('Form value changed:', value);
+    });
+  }
+
+  // private checkPhoneControlsValidity() {
+  //   for (let i = this.phoneControls.length - 1; i >= 0; i--) {
+  //     const phoneGroup = this.phoneControls.at(i);
+  //     if (phoneGroup.get('phone')?.invalid) {
+  //       this.phoneControls.removeAt(i);
+  //     }
+  //   }
+  //   this.updatePhoneArray();
+  // }
+
+  // private updatePhoneArray() {
+  //   this.phoneArray = this.phoneControls.controls as FormGroup[];
+  // }
 }

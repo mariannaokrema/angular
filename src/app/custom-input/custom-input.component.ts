@@ -1,12 +1,4 @@
-import {
-  Component,
-  Input,
-  OnInit,
-  signal,
-  computed,
-  WritableSignal,
-  HostBinding,
-} from '@angular/core';
+import { Component, Input, OnInit, signal, computed, WritableSignal, HostBinding } from '@angular/core';
 import { FormGroup, FormControl } from '@angular/forms';
 import { NgTemplateOutlet } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
@@ -14,7 +6,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 @Component({
   selector: 'app-custom-input',
   templateUrl: './custom-input.component.html',
-  styleUrl: './custom-input.component.scss',
+  styleUrls: ['./custom-input.component.scss'],
   standalone: true,
   imports: [NgTemplateOutlet, ReactiveFormsModule],
 })

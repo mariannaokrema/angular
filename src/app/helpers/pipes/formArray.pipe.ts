@@ -3,7 +3,7 @@ import { FormArray, FormGroup } from '@angular/forms';
 
 @Pipe({
   standalone: true,
-  name: 'formArray'
+  name: 'formArray',
 })
 export class FormArrayPipe implements PipeTransform {
   transform(value: FormGroup, controlName: string): FormArray {

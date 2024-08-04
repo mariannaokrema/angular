@@ -1,10 +1,5 @@
 import { Component, inject } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
+import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { AuthService } from '../../auth/auth.service';
 import { Router } from '@angular/router';
 
@@ -33,7 +28,7 @@ export class LoginPageComponent {
         (error) => {
           // Handle error response here, e.g., show an error message
           console.error('Login failed', error);
-        }
+        },
       );
     }
   }

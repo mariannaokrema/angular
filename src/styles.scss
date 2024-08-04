@@ -4,7 +4,7 @@
 @tailwind components;
 @tailwind utilities;
 
-@import "./app/styles/fonts.scss";
+@import './app/styles/fonts.scss';
 
 :root {
   --dark-color: #2a3636;
@@ -13,7 +13,7 @@
 }
 
 body {
-  font-family: "JetBrains Momo", sans-serif;
+  font-family: 'JetBrains Momo', sans-serif;
   background-color: var(--dark-color);
   color: var(--light-color);
 }

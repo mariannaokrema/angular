@@ -1,0 +1,21 @@
+# ! MAYBE NEED IN FUTURE
+# .angular/
+# devops
+# e2e
+# node_modules
+# projects
+# src
+# .browserslistrc
+# .dockerignore
+# .editorconfig
+# angular.json
+# debug.log
+# docker-compose.yml
+# karma.conf.js
+# package-lock.json
+# README.md
+# tsconfig.app.json
+# tsconfig.base.json
+# tsconfig.json
+# tsconfig.spec.json
+# tslint.json

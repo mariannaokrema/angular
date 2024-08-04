@@ -1,13 +1,12 @@
 :host {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    height: 100dvh;
-    align-items: center;
-    margin: 0 5%;
-  }
-  
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  height: 100dvh;
+  align-items: center;
+  margin: 0 5%;
+}
 
-  .image {
-    width: 100px;
-    height: 100px;
-  }
+.image {
+  width: 100px;
+  height: 100px;
+}

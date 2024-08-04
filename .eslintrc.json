@@ -1,0 +1,312 @@
+{
+  "root": true,
+  "ignorePatterns": ["projects/**/*"],
+  "overrides": [
+    {
+      "files": ["*.ts"],
+      "parserOptions": {
+        "project": ["tsconfig.json", "e2e/tsconfig.json"],
+        "createDefaultProgram": true
+      },
+      "extends": [
+        "eslint:recommended",
+        "plugin:@angular-eslint/recommended",
+        "plugin:@angular-eslint/template/process-inline-templates",
+        "plugin:prettier/recommended"
+      ],
+      "rules": {
+        "accessor-pairs": "off",
+        "array-callback-return": [
+          2,
+          {
+            "allowImplicit": true
+          }
+        ],
+        "block-scoped-var": 1,
+        "complexity": ["off", 20],
+        "class-methods-use-this": 0,
+        "consistent-return": 0,
+        "curly": ["error", "multi-line"],
+        "default-case": [
+          "error",
+          {
+            "commentPattern": "^no default$"
+          }
+        ],
+        "default-case-last": "error",
+        "default-param-last": "error",
+        "dot-notation": [
+          "error",
+          {
+            "allowKeywords": true
+          }
+        ],
+        "dot-location": ["error", "property"],
+        "eqeqeq": [
+          "error",
+          "always",
+          {
+            "null": "ignore"
+          }
+        ],
+        "grouped-accessor-pairs": "error",
+        "guard-for-in": "error",
+        "max-classes-per-file": ["error", 1],
+        "no-alert": "warn",
+        "no-caller": "error",
+        "no-case-declarations": "error",
+        "no-constructor-return": 0,
+        "no-div-regex": "off",
+        "no-else-return": [
+          "error",
+          {
+            "allowElseIf": false
+          }
+        ],
+        "no-empty-function": 0,
+        "no-empty-pattern": "error",
+        "no-eq-null": "off",
+        "no-eval": "error",
+        "no-extend-native": "error",
+        "no-extra-bind": "error",
+        "no-extra-label": "error",
+        "no-fallthrough": "warn",
+        "no-floating-decimal": "error",
+        "no-global-assign": [
+          "error",
+          {
+            "exceptions": []
+          }
+        ],
+        "no-native-reassign": "off",
+        "no-implicit-coercion": [
+          "off",
+          {
+            "boolean": false,
+            "number": true,
+            "string": true,
+            "allow": []
+          }
+        ],
+        "no-implicit-globals": "off",
+        "no-implied-eval": "error",
+        "no-invalid-this": "off",
+        "no-iterator": "error",
+        "no-labels": [
+          "error",
+          {
+            "allowLoop": false,
+            "allowSwitch": false
+          }
+        ],
+        "no-lone-blocks": "error",
+        "no-loop-func": "error",
+        "no-magic-numbers": [
+          "off",
+          {
+            "ignore": [],
+            "ignoreArrayIndexes": true,
+            "enforceConst": true,
+            "detectObjects": false
+          }
+        ],
+        "no-multi-spaces": [
+          "error",
+          {
+            "ignoreEOLComments": false
+          }
+        ],
+        "no-multi-str": "error",
+        "no-new": "error",
+        "no-new-func": "error",
+        "no-new-wrappers": "error",
+        "no-nonoctal-decimal-escape": "error",
+        "no-octal": "error",
+        "no-octal-escape": "error",
+        "no-param-reassign": [
+          "warn",
+          {
+            "props": true,
+            "ignorePropertyModificationsFor": [
+              "acc",
+              "accumulator",
+              "e",
+              "ctx",
+              "context",
+              "req",
+              "request",
+              "res",
+              "response",
+              "$scope",
+              "staticContext"
+            ]
+          }
+        ],
+        "no-proto": "error",
+        "no-redeclare": "error",
+        "no-restricted-properties": [
+          "error",
+          {
+            "object": "arguments",
+            "property": "callee",
+            "message": "arguments.callee is deprecated"
+          },
+          {
+            "object": "global",
+            "property": "isFinite",
+            "message": "Please use Number.isFinite instead"
+          },
+          {
+            "object": "self",
+            "property": "isFinite",
+            "message": "Please use Number.isFinite instead"
+          },
+          {
+            "object": "window",
+            "property": "isFinite",
+            "message": "Please use Number.isFinite instead"
+          },
+          {
+            "object": "global",
+            "property": "isNaN",
+            "message": "Please use Number.isNaN instead"
+          },
+          {
+            "object": "self",
+            "property": "isNaN",
+            "message": "Please use Number.isNaN instead"
+          },
+          {
+            "object": "window",
+            "property": "isNaN",
+            "message": "Please use Number.isNaN instead"
+          },
+          {
+            "property": "__defineGetter__",
+            "message": "Please use Object.defineProperty instead."
+          },
+          {
+            "property": "__defineSetter__",
+            "message": "Please use Object.defineProperty instead."
+          },
+          {
+            "object": "Math",
+            "property": "pow",
+            "message": "Use the exponentiation operator (**) instead."
+          }
+        ],
+        "no-return-assign": ["error", "always"],
+        "no-return-await": "error",
+        "no-script-url": "error",
+        "no-self-assign": [
+          "error",
+          {
+            "props": true
+          }
+        ],
+        "no-self-compare": "error",
+        "no-sequences": "error",
+        "no-throw-literal": "error",
+        "no-unmodified-loop-condition": "off",
+        "no-unused-expressions": 0,
+        "no-unused-labels": "error",
+        "no-useless-call": "off",
+        "no-useless-catch": "error",
+        "no-useless-concat": "error",
+        "no-useless-escape": "error",
+        "no-useless-return": "error",
+        "no-void": "error",
+        "no-warning-comments": [
+          "off",
+          {
+            "terms": ["todo", "fixme", "xxx"],
+            "location": "start"
+          }
+        ],
+        "no-with": "error",
+        "prefer-promise-reject-errors": [
+          "error",
+          {
+            "allowEmptyReject": true
+          }
+        ],
+        "prefer-named-capture-group": "off",
+        "prefer-regex-literals": [
+          "error",
+          {
+            "disallowRedundantWrapping": true
+          }
+        ],
+        "radix": "error",
+        "require-await": "off",
+        "require-unicode-regexp": "off",
+        "vars-on-top": "error",
+        "wrap-iife": [
+          "error",
+          "outside",
+          {
+            "functionPrototypeMethods": false
+          }
+        ],
+        "yoda": "error",
+        "no-unused-vars": "off",
+        "no-const-assign": 2,
+        "no-undef": 0,
+        "prefer-const": 1,
+        "no-undef-init": 2,
+        "no-cond-assign": 1,
+        "no-prototype-builtins": 0,
+        "no-console": 1,
+        "no-constant-binary-expression": 1,
+        "no-constant-condition": 1,
+        "no-dupe-args": 1,
+        "no-dupe-else-if": 1,
+        "no-duplicate-case": 1,
+        "no-duplicate-imports": 1,
+        "no-loss-of-precision": 1,
+        "no-setter-return": 2,
+        "no-this-before-super": 2,
+        "no-unreachable": 1,
+        "use-isnan": 1,
+        "valid-typeof": 1,
+        "no-unused-private-class-members": 1,
+        "arrow-parens": 1,
+        "arrow-spacing": 1,
+        "block-spacing": 1,
+        "brace-style": 1,
+        "@angular-eslint/contextual-lifecycle": ["off"],
+        "@angular-eslint/component-selector": [
+          "error",
+          {
+            "prefix": "app",
+            "style": "kebab-case",
+            "type": "element"
+          }
+        ],
+        "@angular-eslint/directive-selector": [
+          "error",
+          {
+            "prefix": "app",
+            "style": "camelCase",
+            "type": "attribute"
+          }
+        ],
+        "sort-imports": [
+          "error",
+          {
+            "ignoreCase": false,
+            "ignoreDeclarationSort": true,
+            "ignoreMemberSort": true,
+            "memberSyntaxSortOrder": ["none", "all", "multiple", "single"],
+            "allowSeparatedGroups": false
+          }
+        ]
+      }
+    },
+    {
+      "files": ["*.html"],
+      "extends": ["plugin:@angular-eslint/template/recommended"],
+      "rules": {}
+    }
+  ]
+}

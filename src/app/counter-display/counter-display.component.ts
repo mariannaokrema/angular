@@ -6,12 +6,10 @@ import { toSignal } from '@angular/core/rxjs-interop';
   selector: 'app-counter-display',
   standalone: true,
   imports: [],
-  template: `<p>Counter: {{ counter().counter }}</p>`,
+  template: `<p>Counter: {{ data().counter }}</p>`,
   styleUrls: ['./counter-display.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class CounterDisplayComponent {
-  private readonly route = inject(ActivatedRoute);
-
-  protected readonly counter = toSignal(this.route.data, { initialValue: { counter: 0 } });
+  protected readonly data = toSignal(inject(ActivatedRoute).data, { initialValue: { counter: 0 } });
 }

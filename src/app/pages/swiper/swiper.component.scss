@@ -1,0 +1,17 @@
+.swiper-container {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.swiper-wrapper {
+  display: flex;
+}
+.swiper-slide {
+  color: black;
+  border: 1px solid red;
+  text-align: center;
+  font-size: 18px;
+  height: 200px;
+  background-color: white;
+}

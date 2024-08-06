@@ -19,5 +19,10 @@ export const routes: Routes = [
     providers: [CounterResolver],
     resolve: { counter: CounterResolver },
   },
+  {
+    path: 'swiper',
+
+    loadComponent: () => import('./pages/swiper/swiper.component'),
+  },
   { path: '', redirectTo: '/contact', pathMatch: 'full' },
 ];

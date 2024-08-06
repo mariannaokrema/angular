@@ -1,16 +1,16 @@
-import { Directive, ElementRef, HostListener, Input } from '@angular/core';
+import { Directive, ElementRef, HostListener, inject, Input } from '@angular/core';
 
 @Directive({
   selector: 'img[appImageFallback]',
   standalone: true,
 })
-export class ImageFallbackDirective {
-  @Input() appImageFallback!: string;
+export default class ImageFallbackDirective {
+  private readonly el = inject(ElementRef);
 
-  constructor(private el: ElementRef) {}
+  @Input() appImageFallback = '/assets/images/image.png';
 
-  @HostListener('error') onError() {
+  @HostListener('error') _() {
     const element: HTMLImageElement = this.el.nativeElement;
-    element.src = this.appImageFallback || '/assets/images/image.png';
+    element.src = this.appImageFallback;
   }
 }

@@ -19,7 +19,9 @@
 
 <div>
   <h1>Welcome to the Date Formatter App</h1>
-  <app-custom-date></app-custom-date>
-  <img src="/assets/images/756084.jpg" appImageFallback="/assets/images/image.png" alt="Example image">
-
+  <div>
+    <p>Original Date: {{ currentDate }}</p>
+    <p>Formatted Date: {{ currentDate | formatDate: 'dd/MM/yyyy' }}</p>
+  </div>
+  <img src="/assets/images/756084.jpg" appImageFallback="/assets/images/image.png" alt="Example image" />
 </div>

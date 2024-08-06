@@ -1,8 +1,8 @@
 // log.decorator.ts
-export function Log(target: Object, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) {
+export function Log(_target: Readonly<Object>, propertyKey: string | symbol, descriptor: TypedPropertyDescriptor<any>) {
   const originalMethod = descriptor.value;
-
-  descriptor.value = function (...args: any[]) {
+  const d = descriptor;
+  d.value = function (...args: any[]) {
     console.log(`Called ${String(propertyKey)} with arguments:`, args);
     const result = originalMethod.apply(this, args);
     console.log(`Result of ${String(propertyKey)}:`, result);
@@ -11,3 +11,5 @@ export function Log(target: Object, propertyKey: string | symbol, descriptor: Ty
 
   return descriptor;
 }
+
+// .apply .bind

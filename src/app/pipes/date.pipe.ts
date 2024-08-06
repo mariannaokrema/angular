@@ -5,8 +5,8 @@ import { format } from 'date-fns';
   name: 'formatDate',
   standalone: true,
 })
-export class DatePipe implements PipeTransform {
-  transform(value: Date | string | number, dateFormat: string): string {
+export default class DatePipe implements PipeTransform {
+  transform(value: Date | string | number, dateFormat: string) {
     if (!value) return '';
     const date = new Date(value);
     return format(date, dateFormat);

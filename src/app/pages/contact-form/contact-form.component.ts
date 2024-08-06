@@ -8,12 +8,20 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TResponseData } from '../../types/responseData';
 import { FormService } from '../../services/Form.service';
 import { CustomDateComponent } from '../../custom-date/custom-date.component';
-import { ImageFallbackDirective } from '../../directives/image-fallback.directive';
+import DatePipe from '../../pipes/date.pipe';
+import ImageFallbackDirective from '../../directives/image-fallback.directive';
 
 @Component({
   selector: 'app-contact-form',
   standalone: true,
-  imports: [CommonModule, ReactiveFormsModule, CustomInputComponent, ImageFallbackDirective, CustomDateComponent],
+  imports: [
+    CommonModule,
+    ReactiveFormsModule,
+    CustomInputComponent,
+    ImageFallbackDirective,
+    CustomDateComponent,
+    DatePipe,
+  ],
   templateUrl: './contact-form.component.html',
   styleUrls: ['./contact-form.component.scss'],
   providers: [PostService],
@@ -31,6 +39,7 @@ export class ContactFormComponent implements OnInit {
     message: ['', Validators.required],
     // phones: this.fb.array([]),
   });
+  currentDate = new Date();
 
   // protected phoneControls = this.form.get('phones') as FormArray;
   // protected phoneArray: FormGroup[] = [];

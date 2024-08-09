@@ -2,12 +2,12 @@ import { Component, DestroyRef, OnInit, inject } from '@angular/core';
 import { FormBuilder, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { Router } from '@angular/router';
-import { PostService } from '../../services/Post.service';
-import { CustomInputComponent } from '../../custom-input/custom-input.component';
+import { PostService } from '../../services/post.service';
+import { CustomInputComponent } from '../../components/custom-input/custom-input.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TResponseData } from '../../types/responseData';
 import { FormService } from '../../services/Form.service';
-import { CustomDateComponent } from '../../custom-date/custom-date.component';
+import { CustomDateComponent } from '../../components/custom-date/custom-date.component';
 import DatePipe from '../../pipes/date.pipe';
 import ImageFallbackDirective from '../../directives/image-fallback.directive';
 

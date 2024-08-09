@@ -1,0 +1,7 @@
+<form [formGroup]="form" class="form">
+  <app-custom-input [formGroup]="form" label="Name" controlName="name" placeholder="Enter your name" />
+  <app-custom-input [formGroup]="form" label="Email" controlName="email" type="email" placeholder="Enter your email" />
+  <app-custom-input [formGroup]="form" label="Message" controlName="message" placeholder="Enter your message" />
+
+  <button type="submit" [disabled]="isSubmitting()" (click)="onSubmit()" class="submit-button">Submit</button>
+</form>

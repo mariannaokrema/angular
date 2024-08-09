@@ -24,6 +24,7 @@
     "@angular/router": "^18.0.0",
     "@ngx-translate/core": "^15.0.0",
     "@ngx-translate/http-loader": "^8.0.0",
+    "@types/swiper": "^6.0.0",
     "angular-imask": "^7.6.1",
     "date-fns": "^3.6.0",
     "ngx-cookie-service": "^18.0.0",
